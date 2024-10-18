@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "$defs": {
+    "elementType": {
+      "enum": [ "炎", "水", "雷", "光", "闇" ]
+    },
+    "raceType": {
+      "enum": [ "人間", "魔族", "神族" ]
+    },
+    "roleType": {
+      "enum": [ "ATK", "SPD", "DEF", "SUP", "HEAL" ]
+    },
+    "weaponType": {
+      "enum": [ "斬撃", "打撃", "魔法" ]
+    },
+
+    "buffType": {
+      "enum": [ "ATK", "重さ", "ノーツ前進", "ノーツ移動", "CT短縮", "EX上昇", "バリア(HP)", "バリア(回数)", "チャージ付与", "ステルス付与", "サブ属性付与" ]
+    },
+    "debuffType": {
+      "enum": [ "ATK", "重さ", "ノックバック", "ノーツ強制移動", "CT延長", "被ダメ増", "毒", "麻痺", "混乱", "萎縮", "封印", "火傷", "凍傷" ]
+    },
+    "targetType": {
+      "enum": [ "自身", "単体", "範囲", "種族", "属性", "全体" ]
+    }
+  },
+
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "date",
+      "name",
+      "element",
+      "race",
+      "role",
+      "weapon",
+      "hp",
+      "ex",
+      "atk",
+      "crit",
+      "exup",
+      "ctmin",
+      "ctmax",
+      "skills"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string" },
+      "name": { "type": "string" },
+      "date": { "type": "string" },
+      "cv": { "type": "string" },
+      "star": { "type": "integer" },
+      "element": { "$ref": "#/$defs/elementType" },
+      "race": { "$ref": "#/$defs/raceType" },
+      "role": { "$ref": "#/$defs/roleType" },
+      "weapon": { "$ref": "#/$defs/weaponType" },
+      "hp": { "type": "number" },
+      "ex": { "type": "number" },
+      "atk": { "type": "number" },
+      "crit": { "type": "number" },
+      "exup": { "type": "number" },
+      "ctmin": { "type": "number" },
+      "ctmax": { "type": "number" },
+      "skills": {
+        "type": "array"
+      },
+      "note": { "type": "string" }
+    }
+  }
+}
