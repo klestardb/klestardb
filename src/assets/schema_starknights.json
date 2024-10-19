@@ -14,12 +14,23 @@
     "weaponType": {
       "enum": [ "斬撃", "打撃", "魔法" ]
     },
+    "factionType": {
+      "enum": [ "新星学園", "流星学園", "守護天使", "ネビュラ", "コラプサー", "その他", "" ]
+    },
+    "gradeType": {
+      "enum": [ "1年生", "2年生", "3年生", "教師・その他" ]
+    },
 
     "buffType": {
-      "enum": [ "ATK", "重さ", "ノーツ前進", "ノーツ移動", "CT短縮", "EX上昇", "バリア(HP)", "バリア(回数)", "チャージ付与", "ステルス付与", "サブ属性付与" ]
+      "enum": [
+        "ATK", "クリティカル確率", "クリティカルダメージ", "ノックバック軽減", "ノックバック無効", "カウンター",
+        "ノーツ前進", "ノーツ移動", "行動CT", "EX上昇", "消費EX減少", "バリア(HP)", "バリア(回数)", "チャージ", "ステルス", "サブ属性"
+      ]
     },
     "debuffType": {
-      "enum": [ "ATK", "重さ", "ノックバック", "ノーツ強制移動", "CT延長", "被ダメ増", "毒", "麻痺", "混乱", "萎縮", "封印", "火傷", "凍傷" ]
+      "enum": [
+        "ATK", "重さ", "ノックバック増加", "ノーツ強制移動", "CT延長", "ダメージ増加", "毒", "麻痺", "混乱", "萎縮", "封印", "火傷", "凍傷"
+      ]
     },
     "targetType": {
       "enum": [ "自身", "単体", "範囲", "種族", "属性", "全体" ]
@@ -48,11 +59,13 @@
     ],
     "additionalProperties": false,
     "properties": {
-      "id": { "type": "string" },
-      "name": { "type": "string" },
+      "id": { "type": "integer" },
       "date": { "type": "string" },
+      "name": { "type": "string" },
       "cv": { "type": "string" },
       "star": { "type": "integer" },
+      "faction": { "$ref": "#/$defs/factionType" },
+      "grade": { "$ref": "#/$defs/gradeType" },
       "element": { "$ref": "#/$defs/elementType" },
       "race": { "$ref": "#/$defs/raceType" },
       "role": { "$ref": "#/$defs/roleType" },
@@ -64,9 +77,8 @@
       "exup": { "type": "number" },
       "ctmin": { "type": "number" },
       "ctmax": { "type": "number" },
-      "skills": {
-        "type": "array"
-      },
+      "skills": { "type": "array" },
+      "tags": { "type": "array" },
       "note": { "type": "string" }
     }
   }

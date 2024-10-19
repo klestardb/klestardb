@@ -7,6 +7,8 @@ node_modules
 /masterdata
 */_build*
 config.py
+/tools/catalog.json
+/tools/tmp/*
 
 # local env files
 .env.local
